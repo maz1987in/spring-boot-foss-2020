@@ -6,6 +6,7 @@
         <title>Books</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/all.css">
     	<link rel="stylesheet" th:href="@{/css/main.css}"/>
     </head>
     <body>
@@ -29,13 +30,13 @@
                             <tbody>
                                 <tr th:each="book : ${books}">
                                     <td th:text="${book.name}"></td>
-                                    <td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary"><i class="fas fa-book-edit ml-2"></i></a></td>
-                                    <td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-primary"><i class="fas fa-book-times ml-2"></i></a></td>
+                                    <td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a></td>
+                                    <td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-primary"><i class="fas fa-times ml-2"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>      
-                    <p class="my-5"><a href="/book" class="btn btn-primary"><i class="fas fa-book-plus ml-2"></i></a></p>
+                    <p class="my-5"><a href="/book" class="btn btn-primary"><i class="fas fa-plus ml-2"></i></a></p>
                 </div>
             </div>
         </div>
