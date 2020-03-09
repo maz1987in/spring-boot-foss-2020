@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import om.foss.demo.error.BookNotFoundException;
 import om.foss.demo.persistence.model.Book;
 import om.foss.demo.persistence.repo.BookRepository;
 
@@ -44,7 +45,7 @@ public class BookRESTController {
 	    // Find
 	    @GetMapping("/books/{id}")
 	    Book findOne(@PathVariable Long id) {
-	        return repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+	        return repository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
 	    }
 
 	    // Save or update

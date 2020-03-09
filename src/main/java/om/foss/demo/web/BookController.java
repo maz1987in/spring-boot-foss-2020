@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import om.foss.demo.error.BookNotFoundException;
 import om.foss.demo.persistence.model.Book;
 import om.foss.demo.persistence.repo.BookRepository;
 
@@ -41,7 +42,7 @@ public class BookController {
     }
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        Book book = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
         model.addAttribute("book", book);
         return "update-book";
     }
@@ -60,7 +61,7 @@ public class BookController {
     
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") long id, Model model) {
-        Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        Book book = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
         bookRepository.delete(book);
         model.addAttribute("books", bookRepository.findAll());
         return "books";
