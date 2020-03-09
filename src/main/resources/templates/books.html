@@ -23,6 +23,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Author</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -30,6 +31,7 @@
                             <tbody>
                                 <tr th:each="book : ${books}">
                                     <td th:text="${book.name}"></td>
+                                    <td th:text="${book.author}"></td>
                                     <td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a></td>
                                     <td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-primary"><i class="fas fa-times ml-2"></i></a></td>
                                 </tr>
